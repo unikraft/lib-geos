@@ -1,0 +1,24 @@
+menuconfig LIBGEOS
+	bool "libgeos - a C/C++ library for GIS computational geometry"
+	default n
+	select LIBCXX
+	select CXX_THREADS
+
+
+if LIBGEOS
+    choice
+    prompt "Provide main function"
+    default LIBGEOS_NOMAIN
+
+    config LIBGEOS_NOMAIN
+        bool "No"
+
+    config LIBGEOS_CLI
+        bool "GeosOp command-line interface"
+
+    config LIBGEOS_UNITTEST
+        bool "libgeos unit tests"
+
+    endchoice
+
+endif
